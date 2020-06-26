@@ -27,4 +27,5 @@ Django ModelForm, it passes as you would expect it to, showing all the errors.
 
 # Run Tests
 
+    $ export DJANGO_SETTINGS_MODULE=config.settings
     $ pytest
