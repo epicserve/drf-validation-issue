@@ -1,11 +1,12 @@
 from django.test import TestCase
 
-from pizzas.models import ToppingType, Topping
+from pizzas.models import ToppingType, Topping, Crust
 
 
 class BasePizzaTest(TestCase):
 
     def create_toppings(self):
+        self.crust = Crust.objects.create(name='Original', slug='original')
         self.meat = ToppingType.objects.create(name='Meat', slug='meat')
         self.cheese = ToppingType.objects.create(name='Cheese', slug='cheese')
         self.sauce = ToppingType.objects.create(name='Sauce', slug='sauce')

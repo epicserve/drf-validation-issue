@@ -11,6 +11,7 @@ class TestPizzaForm(BasePizzaTest):
         pizza_form = PizzaForm(data={
             'name': 'Pepperoni',
             'price': '12.99',
+            'crust': 1,
             'toppings': [self.pepperoni.pk, self.mozzarella.pk, self.marinara.pk]
         })
         assert pizza_form.is_valid() is True
@@ -19,6 +20,7 @@ class TestPizzaForm(BasePizzaTest):
         pizza_form = PizzaForm(data={
             'name': 'Pepperoni',
             'price': 'a',
+            'crust': 1,
             'toppings': [self.pepperoni.pk]
         })
         assert pizza_form.is_valid() is False

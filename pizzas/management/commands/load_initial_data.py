@@ -1,6 +1,10 @@
-from django.core.management.base import BaseCommand, CommandError
+import random
 
-from pizzas.models import Topping, ToppingType
+from django.contrib.auth import get_user_model
+from django.core.management.base import BaseCommand
+from django.db import DEFAULT_DB_ALIAS
+
+from pizzas.models import Topping, ToppingType, Crust
 
 cheese_list = [
     'Cheddar',
@@ -15,6 +19,12 @@ sauce_list = [
     'Marinara',
     'Alfredo',
     'BBQ',
+]
+
+crust_list = [
+    'Thin',
+    'Original',
+    'Pan'
 ]
 
 meat_list = [
@@ -85,8 +95,33 @@ def add_toppings(topping_list, topping_type):
 class Command(BaseCommand):
     help = 'Load initial pizza toppings'
 
+    def msg(self, s=''):
+        self.stdout.write(self.style.SUCCESS(s))
+
     def handle(self, *args, **options):
+
+        self.msg()
+        self.msg('Loading initial data ...')
+        self.msg()
+
+        for crust in crust_list:
+            Crust.objects.create(name=crust, slug=crust.lower())
+
+        self.stdout.write(self.style.SUCCESS('Crusts added.'))
+
         for topping in topping_types:
             add_toppings(topping['list'], ToppingType.objects.create(name=topping['name'], slug=topping['slug']))
 
-        self.stdout.write(self.style.SUCCESS('Toppings loaded.'))
+        self.stdout.write(self.style.SUCCESS('Toppings added.'))
+
+        username = 'pizzaadmin'
+        random_password = ''.join(random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789%^&*-_=+') for _ in range(8))
+        get_user_model()._default_manager.db_manager(DEFAULT_DB_ALIAS).create_superuser(**{
+            'username': username,
+            'password': random_password,
+        })
+
+        self.msg()
+        self.msg("You're ready to start making pizzas!")
+        self.msg()
+        self.msg(f'Login with the username, "{username}" and the password, "{random_password}".')

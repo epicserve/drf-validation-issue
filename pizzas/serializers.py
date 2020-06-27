@@ -1,13 +1,13 @@
 from rest_framework import serializers
 
-from pizzas.models import Pizza, Topping, ToppingType
+from pizzas.models import Pizza, Topping, ToppingType, Crust
 
 
 class PizzaSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Pizza
-        fields = ('url', 'name', 'price', 'toppings')
+        fields = ('url', 'name', 'price', 'crust', 'toppings')
 
     def validate_price(self, value):
         if value < 0:
@@ -36,6 +36,13 @@ class PizzaSerializer(serializers.HyperlinkedModelSerializer):
             raise serializers.ValidationError({'toppings': topping_errors})
 
         return data
+
+
+class CrustSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Crust
+        fields = ('name', )
 
 
 class ToppingTypeSerializer(serializers.HyperlinkedModelSerializer):

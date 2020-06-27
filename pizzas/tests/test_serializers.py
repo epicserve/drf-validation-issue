@@ -14,6 +14,7 @@ class TestPizzaSerializer(BasePizzaTest):
         pizza_serializer = PizzaSerializer(data={
             'name': 'Pepperoni',
             'price': '12.99',
+            'crust': reverse('crust-detail', args=(self.crust.pk, )),
             'toppings': [
                 reverse('topping-detail', args=(self.pepperoni.pk, )),
                 reverse('topping-detail', args=(self.mozzarella.pk, )),

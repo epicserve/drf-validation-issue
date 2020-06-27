@@ -7,7 +7,7 @@ class PizzaForm(forms.ModelForm):
 
     class Meta:
         model = Pizza
-        fields = ('name', 'price', 'toppings')
+        fields = ('name', 'price', 'crust', 'toppings')
 
     def clean(self):
 
