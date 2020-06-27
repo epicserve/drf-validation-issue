@@ -13,19 +13,13 @@ Django ModelForm, it passes as you would expect it to, showing all the errors.
  
 ## Install
 
+The following assumes you've already installed Python 3.8.3 and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/).
+
     $ cd ~/Sites  # Or directory where you keep projects
     $ git clone https://github.com/epicserve/drf-validation-issue.git
     $ cd drf-validation-issue
-    $ mkvirtualenv drf-validation-issue
-    $ workon drf-validation-issue
-    $ echo `pwd` >  $VIRTUAL_ENV/.project
-    $ pip install poetry
-    $ poetry install
-    $ ./manage.py migrate \
-      && ./manage.py load_toppings \
-      && ./manage.py createsuperuser
+    $ . ./bin/bootstrap.sh
 
 # Run Tests
 
-    $ export DJANGO_SETTINGS_MODULE=config.settings
     $ pytest
