@@ -20,6 +20,6 @@ The following assumes you've already installed Python 3.8.3 and [virtualenvwrapp
     $ cd drf-validation-issue
     $ . ./bin/bootstrap.sh
 
-# Run Tests
+## Run Tests
 
     $ pytest
