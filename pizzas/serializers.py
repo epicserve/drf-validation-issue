@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from pizzas.models import Pizza, Topping, ToppingType, Crust
+from pizzas.models import Crust, Pizza, Topping, ToppingType
 
 
 class PizzaSerializer(serializers.HyperlinkedModelSerializer):

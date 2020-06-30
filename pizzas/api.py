@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from pizzas.models import Pizza, Topping, ToppingType, Crust
-from pizzas.serializers import PizzaSerializer, ToppingSerializer, ToppingTypeSerializer, CrustSerializer
+from pizzas.models import Crust, Pizza, Topping, ToppingType
+from pizzas.serializers import CrustSerializer, PizzaSerializer, ToppingSerializer, ToppingTypeSerializer
 
 
 class PizzaViewSet(viewsets.ModelViewSet):

@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from pizzas.models import ToppingType, Topping, Crust
+from pizzas.models import Crust, Topping, ToppingType
 
 
 class BasePizzaTest(TestCase):

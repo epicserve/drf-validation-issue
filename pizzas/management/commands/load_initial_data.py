@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
 from django.db import DEFAULT_DB_ALIAS
 
-from pizzas.models import Topping, ToppingType, Crust
+from pizzas.models import Crust, Topping, ToppingType
 
 cheese_list = [
     'Cheddar',

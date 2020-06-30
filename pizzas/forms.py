@@ -26,7 +26,6 @@ class PizzaForm(forms.ModelForm):
             if topping.type.slug == 'cheese':
                 cheese_num += 1
 
-        topping_errors = []
         if sauce_num != 1:
             self.add_error('toppings', 'No sauce, please add some sauce.')
 
