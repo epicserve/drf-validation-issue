@@ -13,9 +13,12 @@ In contrast if you run the test `TestPizzaForm.test_invalid_data` which is testi
 Django ModelForm, it passes as you would expect it to, showing all the errors.
 
 If you checkout the branch `fix-validation` you can see that the tests all pass. The solution was to override two Django
-Rest Framework methods in the Serializer class (`to_internal_value` and `run_validation`). The `to_internal_value` was
-overwritten in order to not raise validation errors at this level and to also return cleaned data, instead we wait to
-raise the Validation errors in the `run_validation` method so that they can all returned at once.
+Rest Framework methods in the Serializer class (`to_internal_value` and `run_validation`). The `to_internal_value` method
+was overwritten in order to not raise validation errors in this method and instead return the errors and the cleaned
+data, so that all errors can be combined and returned in the run_validation method.
+
+There has also been [an issue](https://github.com/encode/django-rest-framework/issues/7394) created in the Django Rest
+Framework that references this example.
  
 ## Install
 
